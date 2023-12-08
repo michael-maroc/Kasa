@@ -1,0 +1,39 @@
+.header {
+  margin-bottom: 0.6250rem;
+  padding-top: 20px;
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+
+    &__logo {
+      width: 9.0625rem;
+      height: 2.9325rem;
+    }
+    &__list {
+      display: flex;
+      align-items: center;
+    }
+    &__link {
+      font-size: 1.125rem;
+    }
+    &__link:active {
+      text-decoration: underline;
+    }
+    &__link:not(:last-child) {
+      margin-right: 0.625rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .header {
+    &__logo {
+      width: 13.145rem;
+      height: 4.25rem;
+    }
+    &__link {
+      font-size: 1.5rem;
+    }
+  }
+}

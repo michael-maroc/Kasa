@@ -1,0 +1,41 @@
+@use "../sass/variables" as *;
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  color: $color-primary;
+  text-align: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 2;
+  }
+  &__heading {
+    font-size: 6rem;
+  }
+  &__text {
+    font-size: 1.125rem;
+  }
+  &__link {
+    font-size: 0.875rem;
+    text-decoration: underline;
+    flex: 1;
+  }
+}
+
+@media screen and (min-width: 1400px){
+  .error-page {
+    &__heading {
+      font-size: 18rem;
+    }
+    &__text {
+      font-size: 2.25rem;
+    }
+    &__link {
+      font-size: 1.125rem;
+    }
+  }
+}
