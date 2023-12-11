@@ -1,9 +1,10 @@
-import React from 'react';
+import FooterLogo from '../assets/FooterLogo.svg';
 
 function Footer() {
   return (
-    <footer>
-      <h1>Footer</h1>
+    <footer className='footer'>
+      <img src={FooterLogo} alt="logo Kasa" />
+      <p>© 2020 Kasa. All rights reserved</p>
     </footer>
   );
 }

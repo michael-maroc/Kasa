@@ -3,7 +3,6 @@
 .error-page {
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
   color: $color-primary;
   text-align: center;
 
@@ -11,28 +10,38 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex: 2;
+    margin-top: 12.1875rem;
+    margin-bottom: 66px;
   }
   &__heading {
     font-size: 6rem;
+    margin-bottom: 11px;
   }
   &__text {
     font-size: 1.125rem;
+    margin-bottom: 8.3125rem;
   }
   &__link {
     font-size: 0.875rem;
     text-decoration: underline;
-    flex: 1;
+    margin-bottom: 3.35rem;
   }
 }
 
-@media screen and (min-width: 1400px){
+@media screen and (min-width: 1400px) {
   .error-page {
+
+    &__container {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
     &__heading {
-      font-size: 18rem;
+      font-size: 15rem;
+      margin-bottom: 0;
     }
     &__text {
       font-size: 2.25rem;
+      margin-bottom: 6rem;
     }
     &__link {
       font-size: 1.125rem;

@@ -1,0 +1,87 @@
+@use "./variables" as *;
+
+.home {
+  padding-inline: 1.25rem;
+  
+  &__banner {
+    height: 6.9375rem;
+    width: 100%;
+    background-image: url('../assets/IMG-min.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0.625rem;
+    margin-bottom: 1.375rem;
+  }
+  section {
+    border-radius: 1.5625rem;
+  }
+  &__card {
+    position: relative;
+    height: 13.9375rem;
+    width: 100%;
+    margin-bottom: 0.9375rem;
+    border-radius: 0.625rem;
+    background: linear-gradient(#FFFFFF, #000000 50%);
+  }
+  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 0.625rem;
+    object-fit: cover;
+  }
+  h1 {
+    position: absolute;
+    bottom: 0.625rem;
+    left: 0.625rem;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 800;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .home {
+    section {
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: repeat(2, 1fr);
+      background-color: $color-secondary;
+      padding: 3.625rem 3.125rem;
+      row-gap: 3.125rem;
+      column-gap: 3.75rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .home {
+    padding-inline: 6.25rem;
+    margin-bottom: 2.6875rem;
+
+    &__banner {
+      height: 13.9375rem;
+      margin-bottom: 2.6875rem;
+      border-radius: 1.5625rem;
+    }
+    section {
+      display: grid;
+      justify-content: space-between;
+      grid-template-columns: repeat(3, 1fr);
+      background-color: $color-secondary;
+      padding: 3.625rem 3.125rem;
+      row-gap: 3.125rem;
+      column-gap: 3.75rem;
+    }
+    &__card {
+      height: 21.25rem;
+      background-color: $color-secondary;
+      margin-bottom: 0;
+    }
+    h1 {
+      bottom: 1.25rem;
+      left: 1.25rem;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,7 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap");
 html {
   font-size: 100%;
   box-sizing: border-box;
-  height: 100%;
 }
 
 *, *::before, *::after {
@@ -15,11 +15,12 @@ body {
 }
 
 #root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-width: 375px;
-  max-width: 1400px;
-  min-height: 100dvh;
-  padding: 0 20px;
   margin: 0 auto;
+  min-height: 100dvh;
 }
 
 ul {
@@ -37,7 +38,8 @@ a:focus {
 
 .header {
   margin-bottom: 0.625rem;
-  padding-top: 20px;
+  padding-top: 1.25rem;
+  padding-inline: 1.25rem;
 }
 .header .nav {
   display: flex;
@@ -51,29 +53,118 @@ a:focus {
   display: flex;
   align-items: center;
 }
-.header .nav__link {
-  font-size: 1.125rem;
-}
-.header .nav__link:active {
-  text-decoration: underline;
-}
-.header .nav__link:not(:last-child) {
+.header .nav__item:not(:last-child) {
   margin-right: 0.625rem;
+}
+.header .nav__link {
+  font-size: 0.875rem;
+}
+.header .nav__link:hover {
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 1400px) {
-  .header__logo {
+  .header {
+    margin: 2.5rem 0 3.9375rem 0;
+    padding-inline: 6.25rem;
+  }
+  .header .nav__logo {
     width: 13.145rem;
     height: 4.25rem;
   }
-  .header__link {
+  .header .nav__link {
     font-size: 1.5rem;
+  }
+  .header .nav__item:not(:last-child) {
+    margin-right: 3.5625rem;
+  }
+}
+.home {
+  padding-inline: 1.25rem;
+}
+.home__banner {
+  height: 6.9375rem;
+  width: 100%;
+  background-image: url("../assets/IMG-min.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0.625rem;
+  margin-bottom: 1.375rem;
+}
+.home section {
+  border-radius: 1.5625rem;
+}
+.home__card {
+  position: relative;
+  height: 13.9375rem;
+  width: 100%;
+  margin-bottom: 0.9375rem;
+  border-radius: 0.625rem;
+  background: linear-gradient(#FFFFFF, #000000 50%);
+}
+.home img {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.625rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.home h1 {
+  position: absolute;
+  bottom: 0.625rem;
+  left: 0.625rem;
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 800;
+}
+
+@media screen and (min-width: 600px) {
+  .home section {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #F0F0F0;
+    padding: 3.625rem 3.125rem;
+    row-gap: 3.125rem;
+    -moz-column-gap: 3.75rem;
+         column-gap: 3.75rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .home {
+    padding-inline: 6.25rem;
+    margin-bottom: 2.6875rem;
+  }
+  .home__banner {
+    height: 13.9375rem;
+    margin-bottom: 2.6875rem;
+    border-radius: 1.5625rem;
+  }
+  .home section {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #F0F0F0;
+    padding: 3.625rem 3.125rem;
+    row-gap: 3.125rem;
+    -moz-column-gap: 3.75rem;
+         column-gap: 3.75rem;
+  }
+  .home__card {
+    height: 21.25rem;
+    background-color: #F0F0F0;
+    margin-bottom: 0;
+  }
+  .home h1 {
+    bottom: 1.25rem;
+    left: 1.25rem;
+    font-weight: 500;
   }
 }
 .error-page {
   display: flex;
   flex-direction: column;
-  min-height: 100dvh;
   color: #FF6060;
   text-align: center;
 }
@@ -81,28 +172,58 @@ a:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex: 2;
+  margin-top: 12.1875rem;
+  margin-bottom: 66px;
 }
 .error-page__heading {
   font-size: 6rem;
+  margin-bottom: 11px;
 }
 .error-page__text {
   font-size: 1.125rem;
+  margin-bottom: 8.3125rem;
 }
 .error-page__link {
   font-size: 0.875rem;
   text-decoration: underline;
-  flex: 1;
+  margin-bottom: 3.35rem;
 }
 
 @media screen and (min-width: 1400px) {
+  .error-page__container {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
   .error-page__heading {
-    font-size: 18rem;
+    font-size: 15rem;
+    margin-bottom: 0;
   }
   .error-page__text {
     font-size: 2.25rem;
+    margin-bottom: 6rem;
   }
   .error-page__link {
     font-size: 1.125rem;
+  }
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000000;
+  height: 13.0625rem;
+  padding: 3.875rem;
+  gap: 2.1875rem;
+}
+.footer p {
+  text-align: center;
+  color: #fff;
+  font-size: 0.75rem;
+}
+
+@media screen and (min-width: 1400px) {
+  .footer p {
+    font-size: 1.5rem;
   }
 }/*# sourceMappingURL=main.css.map */

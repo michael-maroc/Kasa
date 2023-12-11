@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000000;
+  height: 13.0625rem;
+  padding: 3.875rem;
+  gap: 2.1875rem;
+
+  p {
+    text-align: center;
+    color: #fff;
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 1400px){
+  .footer 
+  
+    p {
+      font-size: 1.5rem;
+    }
+}

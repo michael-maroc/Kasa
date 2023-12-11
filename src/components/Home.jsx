@@ -1,10 +1,16 @@
-import React from 'react';
+import AcommodationsData from '../data/appartements.json';
+import AccommodationCard from './AccommodationCard';
 
 function Home() {
   return (
     <section className="home">
-      <h1>Home Page</h1>
-    </section>
+      <div className="home__banner"></div>
+      <section>
+        {AcommodationsData?.map((accommodation) => (
+          <AccommodationCard accommodation={accommodation} key={accommodation.id} />
+        ))}
+      </section>
+    </section> 
   );
 }
 
