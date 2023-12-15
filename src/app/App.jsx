@@ -1,10 +1,10 @@
-import Header from './Header';
-import Footer from './Footer';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { Routes, Route } from 'react-router-dom';
-import Layout from './layout/Layout';
-import Accommodation from './Accommodation';
-import ErrorPage from './ErrorPage';
-import Home from './Home';
+import Layout from '../components/layout/Layout';
+import Accommodation from '../components/Accommodation';
+import ErrorPage from '../components/ErrorPage';
+import Home from '../components/Home';
 
 function App() {
   return (

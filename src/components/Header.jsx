@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import HeaderLogo from '../assets/HeaderLogo.svg';
 import { NavLink } from 'react-router-dom';
 
@@ -6,7 +7,9 @@ function Header() {
     <header className="header">
       <nav className="nav">
         <div className="nav__logo-container">
-          <img className="nav__logo" src={HeaderLogo} alt="logo Kasa" />
+          <Link to="/">
+            <img className="nav__logo" src={HeaderLogo} alt="logo Kasa" />
+          </Link>
         </div>
         <ul className="nav__list">
           <li className="nav__item">
