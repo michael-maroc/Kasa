@@ -18,10 +18,18 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-width: 375px;
+  // min-width: 375px;
   margin: 0 auto;
   min-height: 100dvh;
   // max-width: 1400px;
+}
+.App {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.home, .accommodation, .about, .error-page {
+  flex: 1;
 }
 ul {
   list-style-type: none;

@@ -1,11 +1,9 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Context } from '../context/ApiContext';
-import { useParams } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useParams, Navigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import Dropdown from './Dropdown';
 
 function Accommodation() {
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
@@ -16,14 +14,19 @@ function Accommodation() {
   const foundAccommodation = accommodationList.find((el) => el.id === id);
   const rating = parseInt(foundAccommodation?.rating);
 
+  const image = foundAccommodation?.cover;
+
   const content = (
     <section className="accommodation" key={foundAccommodation?.id}>
       <header className="accommodation__banner">
-        <img
+        <div 
           className="accommodation__image"
-          src={foundAccommodation?.cover}
-          alt="logement"
-        />
+          style={{ 
+            backgroundImage: `url(${image})`,
+            backgroundPosition: `center`,
+            backgroundSize: 'cover'
+          }}
+        ></div>
       </header>
       <main className="accommodation__main">
         <div>
@@ -71,40 +74,20 @@ function Accommodation() {
         </div>
       </main>
       <footer className='accommodation__footer'>
-        <div 
-          className='accommodation__dropdown' 
-          onClick={() => isDescriptionOpen ? setIsDescriptionOpen(false) : setIsDescriptionOpen(true)}
-        >
-          <div className='accommodation__dropdown__content'>
-            <p>Description</p>
-            <FontAwesomeIcon 
-              icon={isDescriptionOpen ? faChevronUp : faChevronDown} 
-            />
-          </div>
-          {isDescriptionOpen && (
-            <div className="accommodation__description">
-              <p>{foundAccommodation.description}</p>
-            </div>
-          )}
-        </div>
-        <div className='accommodation__dropdown'>
-          <div 
-            className='accommodation__dropdown__content'
-            onClick={() => isEquipmentOpen ? setIsEquipmentOpen(false) : setIsEquipmentOpen(true)} 
-          >
-            <p>Équipements</p>
-            <FontAwesomeIcon 
-              icon={isEquipmentOpen ? faChevronUp : faChevronDown} 
-            />
-          </div>
-          {isEquipmentOpen && (
-            <div className="accommodation__equipments">
-              {foundAccommodation.equipments.map((el, index) => (
-                <p key={index}>{el}</p>
-              ))}
-            </div>
-          )}
-        </div>
+        <Dropdown 
+          className={'accommodation'}
+          isStateOpen={isDescriptionOpen}
+          setStateOpen={setIsDescriptionOpen}
+          title={'Description'}
+          description={foundAccommodation?.description}
+        />
+        <Dropdown 
+          className={'accommodation'}
+          isStateOpen={isEquipmentOpen}
+          setStateOpen={setIsEquipmentOpen}
+          title={'Équipements'}
+          list={foundAccommodation?.equipments}
+        />
       </footer>
     </section>
   )

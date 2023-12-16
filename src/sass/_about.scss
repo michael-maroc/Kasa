@@ -1,0 +1,82 @@
+@use './variables' as *;
+
+.about {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 1.25rem;
+  color: $color-primary;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+
+  &__banner {
+    height: 13.9375rem;
+    width: 100%;
+    background-image: url('../assets/kalen-emsley-Bkci_8qcdvQ-unsplash\ 2-min.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0.625rem;
+  }
+  &__dropdown svg {
+      font-size: 1.15rem;
+  }
+  &__dropdown__content {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    background-color: $color-primary;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.8125rem;
+    border-radius: 0.375rem;
+  }
+  &__description,
+  &__equipments {
+    padding: 1.0625rem 0.75rem 0.0625rem 0.75rem;
+    background-color: #F6F6F6;
+    line-height: 1.4;
+    
+    p {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .about {
+    padding-inline: 3rem;
+
+    &__dropdown {
+      padding-inline: 3rem;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+    .about__dropdown {
+      padding-inline: 5rem;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+  .about {
+    padding-inline: 6.25rem;
+    margin-bottom: 1.9375rem;
+    gap: 1.9375rem;
+    
+    &__dropdown {
+      margin-inline: 6.75rem;
+    }
+    &__dropdown__content p {
+      font-size: 1.125rem;
+    }
+    &__description p,
+    &__equipments P {
+      font-size: 1.125rem;
+    }
+    &__footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4.75rem;
+    }
+  }
+}

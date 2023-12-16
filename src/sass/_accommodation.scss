@@ -6,6 +6,7 @@
 
   &__banner {
     height: 15.9375rem;
+    width: 100%;
     margin-bottom: 0.9375rem;
   }
   &__image {
@@ -90,8 +91,23 @@
   }
 }
 
+@media screen and (min-width: 600px) {
+  .accommodation {
+    padding-inline: 3rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .accommodation__footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4.75rem;
+  }
+}
+
 @media screen and (min-width: 1400px) {
   .accommodation {
+    padding-inline: 6.25rem;
 
     &__main {
       display: flex;
@@ -136,10 +152,10 @@
     &__equipments P {
       font-size: 1.125rem;
     }
-    &__footer {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4.75rem;
-    }
+    // &__footer {
+    //   display: grid;
+    //   grid-template-columns: 1fr 1fr;
+    //   gap: 4.75rem;
+    // }
   }
 }
