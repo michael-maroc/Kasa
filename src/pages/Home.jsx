@@ -4,12 +4,12 @@ function Home({ AccommodationData }) {
   return (
     <main className="home">
       <div className="home__banner">
-        <div className="home__layer">
+        <div className="home__layout">
           <span>Chez vous, partout et ailleurs</span>
         </div>
       </div>
       <ul>
-        {AccommodationData?.map((accommodation) => (
+        {AccommodationData.map((accommodation) => (
           <li className="home__card" key={accommodation.id}>
             <Link to={`accommodation/${accommodation.id}`}>
               <img src={accommodation.cover} alt="location" />

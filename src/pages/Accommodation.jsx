@@ -2,17 +2,17 @@ import { useState } from 'react';
 import { useParams, Navigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import Dropdown from './Dropdown';
+import Dropdown from '../components/Dropdown';
 
 function Accommodation({ AccommodationData }) {
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(true);
   const [isEquipmentOpen, setIsEquipmentOpen] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { id } = useParams();
   const location = useLocation();
   const foundAccommodation = AccommodationData.find((el) => el.id === id);
   const rating = parseInt(foundAccommodation.rating);
   const pictures = foundAccommodation.pictures;
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const prev = () => {
     if (currentIndex <= 0) return setCurrentIndex(pictures.length - 1)
@@ -25,7 +25,7 @@ function Accommodation({ AccommodationData }) {
 
   const content = (
     <main className="accommodation" key={foundAccommodation.id}>
-      <header className="accommodation__banner">
+      <section className="accommodation__banner">
         <FontAwesomeIcon 
           className='accommodation__arrow-left' 
           icon={faChevronLeft} 
@@ -38,19 +38,15 @@ function Accommodation({ AccommodationData }) {
         />
         <div 
           className="accommodation__image"
-          style={{ 
-            backgroundImage: `url(${pictures[currentIndex]})`,
-            backgroundPosition: `center`,
-            backgroundSize: 'cover'
-          }}
+          style={{ backgroundImage: `url(${pictures[currentIndex]})` }}
         ></div>
-      </header>
-      <div className="accommodation__grid">
+      </section>
+      <section className="accommodation__grid">
         <div>
-          <div>
+          <article>
             <h1 className="accommodation__title">{foundAccommodation.title}</h1>
             <p className="accommodation__location">{foundAccommodation.location}</p>
-          </div>
+          </article>
           <div className="accommodation__tags-container">
             {foundAccommodation.tags.map((tag, index) => (
               <span key={index} className="accommodation__tag">
@@ -74,8 +70,8 @@ function Accommodation({ AccommodationData }) {
             </div>
           </div>
         </div>
-      </div>
-      <footer className='accommodation__footer'>
+      </section>
+      <section className='accommodation__footer'>
         <Dropdown 
           className={'accommodation'}
           isStateOpen={isDescriptionOpen}
@@ -90,7 +86,7 @@ function Accommodation({ AccommodationData }) {
           title={'Équipements'}
           list={foundAccommodation.equipments}
         />
-      </footer>
+      </section>
     </main>
   )
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Dropdown from './Dropdown';
+import Dropdown from '../components/Dropdown';
 
 function About() {
   const [isLiabilityOpen, setIsLiabilityOpen] = useState(true);
@@ -10,9 +10,9 @@ function About() {
   
   return (
     <main className='about'>
-      <header className="about__banner">
+      <div className="about__banner">
         <div className="banner"></div>
-      </header>
+      </div>
       
       {/* Fiabilité */}
       <Dropdown 

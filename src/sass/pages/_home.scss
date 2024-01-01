@@ -1,4 +1,4 @@
-@use "./variables" as *;
+@use "../base/variables" as *;
 
 .home {
   
@@ -11,8 +11,9 @@
     background-size: cover;
     border-radius: 0.625rem;
     margin-bottom: 1.375rem;
+    overflow: hidden;
   }
-  &__layer {
+  &__layout {
     display: flex;
     align-items: center;
     height: 100%;
@@ -66,8 +67,8 @@
 
 @media screen and (min-width: 991px) {
   .home {
-    &__banner p {
-      font-size: 3rem;
+    &__layout span {
+      padding-left: 1.5625rem;
     }
     ul {
       display: grid;
@@ -92,6 +93,9 @@
       height: 13.9375rem;
       margin-bottom: 2.6875rem;
       border-radius: 1.5625rem;
+    }
+    &__layout span {
+      font-size: 3rem;
     }
     ul {
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));

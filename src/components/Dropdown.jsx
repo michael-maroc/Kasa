@@ -9,15 +9,13 @@ function Dropdown({ className, isStateOpen, setStateOpen, title, description, li
     >
       <div className={`${className}__dropdown__content`}>
         <p>{title}</p>
-        <FontAwesomeIcon 
-          icon={isStateOpen ? faChevronUp : faChevronDown} 
-        />
+        <FontAwesomeIcon icon={isStateOpen ? faChevronUp : faChevronDown} />
       </div>
 
       {isStateOpen && (
         <div className={`${className}__description`}>
           {description && <p>{description}</p>}
-          {list && list?.map((el, index) => <p key={index}>{el}</p>)}
+          {list && list.map((el, index) => <p key={index}>{el}</p>)}
         </div>
       )}
     </div>
