@@ -6,22 +6,23 @@ import Accommodation from '../components/Accommodation';
 import ErrorPage from '../components/ErrorPage';
 import Home from '../components/Home';
 import About from '../components/About';
+import AccommodationData from '../data/appartements.json';
 
 function App() {
   return (
-    <main className="App">
+    <div className="App">
       <Header />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="accommodation/:id" element={<Accommodation />} />
+          <Route index element={<Home AccommodationData={AccommodationData} />} />
+          <Route path="accommodation/:id" element={<Accommodation AccommodationData={AccommodationData} />} />
           <Route path='about' element={<About />} />
           <Route path="error-page" element={<ErrorPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
       <Footer />
-    </main>
+    </div>
   );
 }
 

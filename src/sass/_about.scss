@@ -3,7 +3,6 @@
 .about {
   display: flex;
   flex-direction: column;
-  padding-inline: 1.25rem;
   color: $color-primary;
   gap: 1.25rem;
   margin-bottom: 1.25rem;
@@ -41,25 +40,8 @@
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .about {
-    padding-inline: 3rem;
-
-    &__dropdown {
-      padding-inline: 3rem;
-    }
-  }
-}
-
-@media screen and (min-width: 900px) {
-    .about__dropdown {
-      padding-inline: 5rem;
-    }
-}
-
-@media screen and (min-width: 1400px) {
-  .about {
-    padding-inline: 6.25rem;
     margin-bottom: 1.9375rem;
     gap: 1.9375rem;
     

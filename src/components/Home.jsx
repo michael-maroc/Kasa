@@ -1,31 +1,25 @@
-import { useEffect, useContext } from 'react';
-import AccommodationsData from '../data/appartements.json';
-import { Context } from '../context/ApiContext';
 import { Link } from 'react-router-dom';
 
-function Home() {
-  const [accommodationList, setaccommodationList] = useContext(Context);
-
-  useEffect(() => {
-    setaccommodationList(AccommodationsData);
-  }, []);
-
-  // console.log(accommodationList);
-
+function Home({ AccommodationData }) {
   return (
-    <section className="home">
-      <div className="home__banner"></div>
-      <section>
-        {accommodationList?.map((accommodation) => (
-          <article className="home__card" key={accommodation.id}>
+    <main className="home">
+      <div className="home__banner">
+        <div className="home__layer">
+          <span>Chez vous, partout et ailleurs</span>
+        </div>
+      </div>
+      <ul>
+        {AccommodationData?.map((accommodation) => (
+          <li className="home__card" key={accommodation.id}>
             <Link to={`accommodation/${accommodation.id}`}>
               <img src={accommodation.cover} alt="location" />
               <h1>{accommodation.title}</h1>
+              <div className="home__card__overlay"></div>
             </Link>
-          </article>
+          </li>
         ))}
-      </section>
-    </section>
+      </ul>
+    </main>
   );
 }
 

@@ -1,41 +1,58 @@
-import { useContext, useState } from 'react';
-import { Context } from '../context/ApiContext';
+import { useState } from 'react';
 import { useParams, Navigate, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown';
 
-function Accommodation() {
-  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
-  const [isEquipmentOpen, setIsEquipmentOpen] = useState(false);
-  const [accommodationList] = useContext(Context);
+function Accommodation({ AccommodationData }) {
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(true);
+  const [isEquipmentOpen, setIsEquipmentOpen] = useState(true);
   const { id } = useParams();
   const location = useLocation();
-  const foundAccommodation = accommodationList.find((el) => el.id === id);
-  const rating = parseInt(foundAccommodation?.rating);
+  const foundAccommodation = AccommodationData.find((el) => el.id === id);
+  const rating = parseInt(foundAccommodation.rating);
+  const pictures = foundAccommodation.pictures;
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const image = foundAccommodation?.cover;
+  const prev = () => {
+    if (currentIndex <= 0) return setCurrentIndex(pictures.length - 1)
+    setCurrentIndex(currentIndex - 1)
+  }
+  const next = () => {
+    if (currentIndex >= pictures.length - 1) return setCurrentIndex(0)
+    setCurrentIndex(currentIndex + 1)
+  }
 
   const content = (
-    <section className="accommodation" key={foundAccommodation?.id}>
+    <main className="accommodation" key={foundAccommodation.id}>
       <header className="accommodation__banner">
+        <FontAwesomeIcon 
+          className='accommodation__arrow-left' 
+          icon={faChevronLeft} 
+          onClick={prev}
+        />
+        <FontAwesomeIcon 
+          className='accommodation__arrow-right' 
+          icon={faChevronRight} 
+          onClick={next}
+        />
         <div 
           className="accommodation__image"
           style={{ 
-            backgroundImage: `url(${image})`,
+            backgroundImage: `url(${pictures[currentIndex]})`,
             backgroundPosition: `center`,
             backgroundSize: 'cover'
           }}
         ></div>
       </header>
-      <main className="accommodation__main">
+      <div className="accommodation__grid">
         <div>
           <div>
-            <h1 className="accommodation__title">{foundAccommodation?.title}</h1>
-            <p className="accommodation__location">{foundAccommodation?.location}</p>
+            <h1 className="accommodation__title">{foundAccommodation.title}</h1>
+            <p className="accommodation__location">{foundAccommodation.location}</p>
           </div>
           <div className="accommodation__tags-container">
-            {foundAccommodation?.tags.map((tag, index) => (
+            {foundAccommodation.tags.map((tag, index) => (
               <span key={index} className="accommodation__tag">
                 {tag}
               </span>
@@ -45,51 +62,36 @@ function Accommodation() {
         <div>
           <div className="accommodation__rating">
             <div className="accommodation__stars">
-              <FontAwesomeIcon
-                icon={faStar}
-                className={rating >= 1 ? 'red-star' : 'gray-star'}
-              />
-              <FontAwesomeIcon
-                icon={faStar}
-                className={rating >= 2 ? 'red-star' : 'gray-star'}
-              />
-              <FontAwesomeIcon
-                icon={faStar}
-                className={rating >= 3 ? 'red-star' : 'gray-star'}
-              />
-              <FontAwesomeIcon
-                icon={faStar}
-                className={rating >= 4 ? 'red-star' : 'gray-star'}
-              />
-              <FontAwesomeIcon
-                icon={faStar}
-                className={rating == 5 ? 'red-star' : 'gray-star'}
-              />
+              <FontAwesomeIcon icon={faStar} className={rating >= 1 ? 'red-star' : 'gray-star'} />
+              <FontAwesomeIcon icon={faStar} className={rating >= 2 ? 'red-star' : 'gray-star'} />
+              <FontAwesomeIcon icon={faStar} className={rating >= 3 ? 'red-star' : 'gray-star'} />
+              <FontAwesomeIcon icon={faStar} className={rating >= 4 ? 'red-star' : 'gray-star'} />
+              <FontAwesomeIcon icon={faStar} className={rating == 5 ? 'red-star' : 'gray-star'} />
             </div>
             <div className="accommodation__hosting">
-              <p>{foundAccommodation?.host.name}</p>
-              <img src={foundAccommodation?.host.picture} alt="photo du propriétaire" />
+              <p>{foundAccommodation.host.name}</p>
+              <img src={foundAccommodation.host.picture} alt="photo du propriétaire" />
             </div>
           </div>
         </div>
-      </main>
+      </div>
       <footer className='accommodation__footer'>
         <Dropdown 
           className={'accommodation'}
           isStateOpen={isDescriptionOpen}
           setStateOpen={setIsDescriptionOpen}
           title={'Description'}
-          description={foundAccommodation?.description}
+          description={foundAccommodation.description}
         />
         <Dropdown 
           className={'accommodation'}
           isStateOpen={isEquipmentOpen}
           setStateOpen={setIsEquipmentOpen}
           title={'Équipements'}
-          list={foundAccommodation?.equipments}
+          list={foundAccommodation.equipments}
         />
       </footer>
-    </section>
+    </main>
   )
 
   return foundAccommodation 

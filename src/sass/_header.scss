@@ -1,7 +1,7 @@
 .header {
-  margin: 1.25rem 1.25rem 0.6250rem 1.25rem;
+  margin: 4% 7% 3%;
   
-  .nav {
+  &__nav {
     display: flex;
     justify-content: space-between;
 
@@ -25,21 +25,10 @@
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .header {
-    margin-inline: 3rem;
 
-    .nav__item:not(:last-child) {
-      margin-right: 1.5rem;
-    }
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .header {
-    margin: 2.75rem 6.25rem 2.0625rem 6.25rem;
-
-    .nav {
+    &__nav {
       
       &__logo {
         width: 13.145rem;

@@ -1,18 +1,42 @@
 @use "./variables" as *;
 
 .accommodation {
-  padding-inline: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   color: $color-primary;
 
   &__banner {
+    position: relative;
+    display: flex;
     height: 15.9375rem;
     width: 100%;
     margin-bottom: 0.9375rem;
+
+    svg {
+      position: absolute;
+      height: 1.5rem;
+      width: 1.5rem;
+      color: white;
+      transform: translateY(-50%);
+      top: 50%;
+    }
+  }
+  &__arrow-left {
+    left: 0;
+  }
+  &__arrow-right {
+    right: 0;
   }
   &__image {
     height: 100%;
     width: 100%;
     border-radius: 0.625rem;
+  }
+  &__grid > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
   }
   &__title {
     font-size: 1.125rem;
@@ -32,7 +56,7 @@
     font-size: 0.625rem;
     color: white;
     background-color: $color-primary;
-    padding: 0.1875rem 0.625rem;
+    padding: 0.1875rem 1.8rem;
     border-radius: 0.3125rem;
     text-align: center;
   }
@@ -81,7 +105,7 @@
   }
   &__description,
   &__equipments {
-    padding: 17.27px 11.5px 1px 11.5px;
+    padding: 1.125rem 0.75rem 0.625rem 0.75rem;
     background-color: #F6F6F6;
     line-height: 1.4;
     
@@ -91,32 +115,21 @@
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 768px) {
   .accommodation {
-    padding-inline: 3rem;
-  }
-}
 
-@media screen and (min-width: 1024px) {
-  .accommodation__footer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4.75rem;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .accommodation {
-    padding-inline: 6.25rem;
-
-    &__main {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+    &__grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
       margin-bottom: 2.375rem;
     }
     &__banner {
-      height: 415px;
+      height: 25.9375rem;
+
+      svg {
+        height: 5rem;
+        width: 6rem;
+      }
     }
     &__title {
       font-size: 2rem;
@@ -134,28 +147,44 @@
       align-items: flex-end;
     }
     &__stars svg {
-        height: 25px;
-        width: 25px;
-        margin-right: 10px;
+        height: 1.5625rem;
+        width: 1.5625rem;
+        margin-right: 0.625rem;
     }
     &__hosting p {
         font-size: 1.125rem;
+        width: 100px;
+        text-align: end;
+        margin-right: 1rem;
     }
     &__hosting img {
-      height: 64px;
-      width: 64px;
+      height: 4rem;
+      width: 4rem;
+    }
+    &__dropdown {
+      margin-bottom: 2rem;
     }
     &__dropdown__content p {
       font-size: 1.125rem;
+    }
+    &__description,
+    &__equipments {
+      padding: 1rem 1rem 0 1rem;
     }
     &__description p,
     &__equipments P {
       font-size: 1.125rem;
     }
-    // &__footer {
-    //   display: grid;
-    //   grid-template-columns: 1fr 1fr;
-    //   gap: 4.75rem;
-    // }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .accommodation {
+
+    &__footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 3%;
+    }
   }
 }

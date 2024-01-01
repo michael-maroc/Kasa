@@ -1,7 +1,6 @@
 @use "./variables" as *;
 
 .home {
-  padding-inline: 1.25rem;
   
   &__banner {
     height: 6.9375rem;
@@ -13,7 +12,20 @@
     border-radius: 0.625rem;
     margin-bottom: 1.375rem;
   }
-  section {
+  &__layer {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    span {
+      color: white;
+      margin-left: 1rem;
+      margin-right: 5.19rem;
+      font-size: 1.5rem;
+    }
+  }
+  ul {
     border-radius: 1.5625rem;
   }
   &__card {
@@ -23,40 +35,57 @@
     margin-bottom: 0.9375rem;
     border-radius: 0.625rem;
     background: linear-gradient(#FFFFFF, #000000 50%);
+    overflow: hidden;
+
+    &__overlay {
+      z-index: 1;
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
   }
   img {
+    z-index: -1;
     height: 100%;
     width: 100%;
     border-radius: 0.625rem;
     object-fit: cover;
   }
   h1 {
+    z-index: 2;
     position: absolute;
     bottom: 0.625rem;
     left: 0.625rem;
     color: white;
     font-size: 1.125rem;
-    font-weight: 800;
+    font-weight: 500;
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 991px) {
   .home {
-    section {
+    &__banner p {
+      font-size: 3rem;
+    }
+    ul {
       display: grid;
       justify-content: space-between;
       grid-template-columns: repeat(2, 1fr);
       background-color: $color-secondary;
       padding: 3.625rem 3.125rem;
-      row-gap: 3.125rem;
-      column-gap: 3.75rem;
+      margin-bottom: 1.375rem;
+      gap: 1.5rem;
+    }
+    &__card {
+      margin-bottom: 0;
     }
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1400px) {
   .home {
-    padding-inline: 6.25rem;
     margin-bottom: 2.6875rem;
 
     &__banner {
@@ -64,24 +93,18 @@
       margin-bottom: 2.6875rem;
       border-radius: 1.5625rem;
     }
-    section {
-      display: grid;
-      justify-content: space-between;
-      grid-template-columns: repeat(3, 1fr);
-      background-color: $color-secondary;
-      padding: 3.625rem 3.125rem;
-      row-gap: 3.125rem;
-      column-gap: 3.75rem;
+    ul {
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+      padding: 3rem;
+      margin-bottom: 0;
     }
     &__card {
       height: 21.25rem;
-      background-color: $color-secondary;
-      margin-bottom: 0;
     }
     h1 {
       bottom: 1.25rem;
       left: 1.25rem;
-      font-weight: 500;
     }
   }
 }
